@@ -1,10 +1,86 @@
 @import "tailwindcss";
 
+/* ── 디자인 토큰 (블루프린트/시스템 설계도) ───────────────────
+   Tailwind v4 @theme → bg-ink, text-signal, border-line 등 유틸 자동 생성 */
+@theme {
+  --color-ink: #080b11;        /* 잉크 배경 */
+  --color-ink-2: #0c1119;      /* 표면/카드 */
+  --color-line: #16202c;       /* 미세 그리드 라인 */
+  --color-line-2: #223142;     /* 주요 라인/보더 */
+  --color-fg: #e7edf3;         /* 본문 */
+  --color-fg-dim: #9fb0c0;     /* 보조 */
+  --color-muted: #5b6b7c;      /* 뮤트/주석 */
+  --color-signal: #3ee0d0;     /* 시그널: 구조/인터랙션 (틸-시안) */
+  --color-amber: #ffb64d;      /* 데이터: 수치/성과 (앰버) */
+
+  --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", monospace;
+  --font-kr: var(--font-plex-kr), var(--font-plex-mono), sans-serif;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: #0f172a;
-  color: #e2e8f0;
+  background-color: var(--color-ink);
+  color: var(--color-fg);
+  font-family: var(--font-kr);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── 설계도 그리드 배경 ─────────────────────────────── */
+.blueprint-grid {
+  background-image:
+    linear-gradient(var(--color-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: center;
+}
+.blueprint-grid-major {
+  background-image:
+    linear-gradient(var(--color-line-2) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line-2) 1px, transparent 1px);
+  background-size: 256px 256px;
+  background-position: center;
+}
+
+/* 스캔라인 오버레이 (아주 미세한 텍스처) */
+.scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.015) 0px,
+    rgba(255, 255, 255, 0.015) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* ── 모션 (기본은 보이게, 애니메이션은 향상으로만) ────────── */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes grid-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes sweep {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(100%); }
+}
+
+.reveal {
+  animation: reveal-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--d, 0s);
+}
+.cursor-blink { animation: blink 1.05s steps(1) infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { animation: none; }
+  .cursor-blink { animation: none; }
+  html { scroll-behavior: auto; }
 }
