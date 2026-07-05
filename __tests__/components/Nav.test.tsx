@@ -4,7 +4,7 @@ import Nav from '@/components/Nav'
 describe('Nav', () => {
   it('로고 텍스트를 렌더링한다', () => {
     render(<Nav />)
-    expect(screen.getByText(/서범수/)).toBeInTheDocument()
+    expect(screen.getByText(/seobeomsu/i)).toBeInTheDocument()
   })
   it('이력서 다운로드 링크가 있다', () => {
     render(<Nav />)
@@ -14,7 +14,7 @@ describe('Nav', () => {
   })
   it('GitHub 링크가 있다', () => {
     render(<Nav />)
-    const link = screen.getByRole('link', { name: /GitHub/ })
+    const link = screen.getByRole('link', { name: /github/i })
     expect(link).toHaveAttribute('href', 'https://github.com/Seobeomsu')
   })
 })

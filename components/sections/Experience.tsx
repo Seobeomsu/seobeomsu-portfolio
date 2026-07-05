@@ -1,7 +1,30 @@
 'use client'
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { experiences } from '@/data/experience'
+import { experiences, type ExperienceItem } from '@/data/experience'
+import SectionHeader from '@/components/ui/SectionHeader'
+
+function Timeline({ items, inView }: { items: ExperienceItem[]; inView: boolean }) {
+  return (
+    <div className="relative space-y-7 pl-5 before:absolute before:left-0 before:top-1 before:bottom-1 before:w-px before:bg-line-2">
+      {items.map((item, i) => (
+        <motion.div
+          key={item.title}
+          initial={{ opacity: 0, x: -12 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.5, delay: i * 0.1 }}
+          className="relative"
+        >
+          <span className="absolute -left-[22px] top-1.5 w-2 h-2 bg-signal rotate-45 ring-4 ring-ink" />
+          <p className="font-mono text-[11px] text-signal tracking-wide mb-1">{item.period}</p>
+          <h4 className="font-kr text-[14px] font-semibold text-fg mb-0.5">{item.title}</h4>
+          <p className="font-mono text-[11px] text-muted mb-1.5">{item.organization}</p>
+          <p className="text-[12.5px] text-fg-dim leading-relaxed">{item.description}</p>
+        </motion.div>
+      ))}
+    </div>
+  )
+}
 
 export default function Experience() {
   const ref = useRef(null)
@@ -10,41 +33,24 @@ export default function Experience() {
   const activities = experiences.filter((e) => e.category === 'activity')
 
   return (
-    <section id="experience" ref={ref} className="py-24 px-12 bg-[#080f1e]">
-      <p className="text-xs font-bold text-blue-500 tracking-widest uppercase mb-2">Experience</p>
-      <h2 className="text-3xl font-bold text-slate-100 mb-3">경력 / <span className="text-blue-500">학력</span></h2>
-      <div className="w-10 h-0.5 bg-blue-800 rounded mb-10" />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        <div>
-          <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-6">Education</p>
-          <div className="space-y-7">
-            {education.map((item, i) => (
-              <motion.div key={item.title} initial={{ opacity: 0, x: -16 }} animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="pl-5 border-l-2 border-blue-500/30 relative">
-                <span className="absolute -left-1.5 top-1 w-2.5 h-2.5 bg-blue-700 rounded-full" />
-                <p className="text-[11px] font-semibold text-blue-400 tracking-wide mb-0.5">{item.period}</p>
-                <h4 className="text-sm font-bold text-slate-200 mb-0.5">{item.title}</h4>
-                <p className="text-xs text-slate-500 mb-1.5">{item.organization}</p>
-                <p className="text-xs text-slate-600 leading-relaxed">{item.description}</p>
-              </motion.div>
-            ))}
+    <section id="experience" ref={ref} className="relative py-24 px-6 sm:px-10 lg:px-20 bg-ink-2 border-t border-line">
+      <div className="max-w-6xl mx-auto">
+        <SectionHeader index="04" en="TIMELINE" right="education / activity">
+          경력 / <span className="text-signal">학력</span>
+        </SectionHeader>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div>
+            <p className="flex items-center gap-2 font-mono text-[11px] text-muted uppercase tracking-widest mb-6">
+              <span className="text-signal">#</span> Education
+            </p>
+            <Timeline items={education} inView={inView} />
           </div>
-        </div>
-        <div>
-          <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-6">Activity</p>
-          <div className="space-y-7">
-            {activities.map((item, i) => (
-              <motion.div key={item.title} initial={{ opacity: 0, x: 16 }} animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="pl-5 border-l-2 border-blue-500/30 relative">
-                <span className="absolute -left-1.5 top-1 w-2.5 h-2.5 bg-blue-700 rounded-full" />
-                <p className="text-[11px] font-semibold text-blue-400 tracking-wide mb-0.5">{item.period}</p>
-                <h4 className="text-sm font-bold text-slate-200 mb-0.5">{item.title}</h4>
-                <p className="text-xs text-slate-500 mb-1.5">{item.organization}</p>
-                <p className="text-xs text-slate-600 leading-relaxed">{item.description}</p>
-              </motion.div>
-            ))}
+          <div>
+            <p className="flex items-center gap-2 font-mono text-[11px] text-muted uppercase tracking-widest mb-6">
+              <span className="text-signal">#</span> Activity
+            </p>
+            <Timeline items={activities} inView={inView} />
           </div>
         </div>
       </div>
