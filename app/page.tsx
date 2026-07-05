@@ -21,9 +21,12 @@ export default function Home() {
         <Experience />
         <Contact />
       </main>
-      <footer className="border-t border-white/[0.06] px-12 py-6 flex justify-between items-center text-xs text-slate-700">
-        <span>© 2026 서범수</span>
-        <span>Next.js · Vercel</span>
+      <footer className="border-t border-line-2 bg-ink px-6 sm:px-10 lg:px-20 py-7 flex flex-col sm:flex-row gap-2 justify-between items-center font-mono text-[11px] text-muted">
+        <span>© 2026 <span className="text-fg-dim">서범수</span> · all systems operational</span>
+        <span className="flex items-center gap-2">
+          <span className="w-1.5 h-1.5 bg-signal/70 rounded-full" />
+          built with Next.js · deployed on GitHub Pages
+        </span>
       </footer>
     </>
   )
