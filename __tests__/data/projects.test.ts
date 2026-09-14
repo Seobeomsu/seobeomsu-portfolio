@@ -13,7 +13,9 @@ describe('projects data', () => {
       expect(p.story).toBeTruthy()
       expect(p.achievement).toBeTruthy()
       expect(p.stacks).toBeInstanceOf(Array)
-      expect(p.githubUrl).toBeTruthy()
+      if (p.githubUrl) {
+        expect(p.githubUrl).toMatch(/^https:\/\/github\.com\//)
+      }
       expect(p.type).toMatch(/^(graduation|team|personal)$/)
     })
   })

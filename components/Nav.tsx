@@ -49,11 +49,10 @@ export default function Nav() {
           github ↗
         </a>
         <a
-          href="/resume.pdf"
-          download
+          href="#contact"
           className="inline-flex items-center gap-1.5 font-medium bg-signal/10 text-signal border border-signal/30 px-3.5 py-2 rounded-sm hover:bg-signal hover:text-ink transition-colors"
         >
-          이력서 <span className="text-[10px]">↓</span>
+          연락하기 <span className="text-[10px]">→</span>
         </a>
       </div>
     </nav>

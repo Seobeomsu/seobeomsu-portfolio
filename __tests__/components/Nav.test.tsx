@@ -6,11 +6,10 @@ describe('Nav', () => {
     render(<Nav />)
     expect(screen.getByText(/seobeomsu/i)).toBeInTheDocument()
   })
-  it('이력서 다운로드 링크가 있다', () => {
+  it('연락하기 링크가 있다', () => {
     render(<Nav />)
-    const link = screen.getByRole('link', { name: /이력서/ })
-    expect(link).toHaveAttribute('href', '/resume.pdf')
-    expect(link).toHaveAttribute('download')
+    const link = screen.getByRole('link', { name: /연락하기/ })
+    expect(link).toHaveAttribute('href', '#contact')
   })
   it('GitHub 링크가 있다', () => {
     render(<Nav />)

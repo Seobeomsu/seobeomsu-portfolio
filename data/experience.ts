@@ -3,10 +3,18 @@ export interface ExperienceItem {
   title: string
   organization: string
   description: string
-  category: 'education' | 'activity'
+  category: 'work' | 'education' | 'activity'
 }
 
 export const experiences: ExperienceItem[] = [
+  {
+    period: '2026.04 — 현재',
+    title: '(주)바이엇 — 백엔드 개발자',
+    organization: 'Bayat · 인플루언서 마케팅 플랫폼',
+    description:
+      'Spring Boot / NestJS 기반 백엔드 개발. 조회 API 성능 개선(7.2s→0.8s), 발송 파이프라인 장애 원인 규명, Meta Graph API 연동. 인턴 수료 후 정규직 전환.',
+    category: 'work',
+  },
   {
     period: '2025.10 — 2026.04',
     title: 'KT AIVLE School 6기',

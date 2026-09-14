@@ -59,15 +59,17 @@ export default function Projects() {
                 </div>
 
                 <div className="flex gap-2 font-mono text-[11px]">
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="text-signal border border-signal/30 px-3 py-1.5 rounded-sm hover:bg-signal/10 transition-colors"
-                  >
-                    github ↗
-                  </a>
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="text-signal border border-signal/30 px-3 py-1.5 rounded-sm hover:bg-signal/10 transition-colors"
+                    >
+                      github ↗
+                    </a>
+                  )}
                   <button className="text-fg-dim border border-line-2 px-3 py-1.5 rounded-sm hover:border-signal/40 hover:text-signal transition-colors">
                     상세 →
                   </button>
