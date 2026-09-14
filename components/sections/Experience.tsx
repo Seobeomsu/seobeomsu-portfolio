@@ -29,19 +29,24 @@ function Timeline({ items, inView }: { items: ExperienceItem[]; inView: boolean 
 export default function Experience() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })
+  const work = experiences.filter((e) => e.category === 'work')
   const education = experiences.filter((e) => e.category === 'education')
   const activities = experiences.filter((e) => e.category === 'activity')
 
   return (
     <section id="experience" ref={ref} className="relative py-24 px-6 sm:px-10 lg:px-20 bg-ink-2 border-t border-line">
       <div className="max-w-6xl mx-auto">
-        <SectionHeader index="04" en="TIMELINE" right="education / activity">
+        <SectionHeader index="04" en="TIMELINE" right="career / education / activity">
           경력 / <span className="text-signal">학력</span>
         </SectionHeader>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
             <p className="flex items-center gap-2 font-mono text-[11px] text-muted uppercase tracking-widest mb-6">
+              <span className="text-signal">#</span> Career
+            </p>
+            <Timeline items={work} inView={inView} />
+            <p className="flex items-center gap-2 font-mono text-[11px] text-muted uppercase tracking-widest mb-6 mt-10">
               <span className="text-signal">#</span> Education
             </p>
             <Timeline items={education} inView={inView} />

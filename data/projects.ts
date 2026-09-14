@@ -8,7 +8,7 @@ export interface Project {
   story: string
   achievement: string
   stacks: string[]
-  githubUrl: string
+  githubUrl?: string
   type: ProjectType
   featured?: boolean
 }
@@ -34,18 +34,16 @@ export const projects: Project[] = [
     story: '대용량 이미지·영상 파일을 백엔드 서버가 모두 처리하는 구조에서 성능 저하가 발생했습니다. 이를 트래픽 병목과 책임 과다 문제로 정의하고, 파일 전송과 데이터 처리를 분리하는 방향으로 구조를 재설계했습니다.',
     achievement: '파일 트래픽 약 80% 감소 · AI 데이터 접근 속도 40% 단축',
     stacks: ['Spring Boot', 'AWS S3', 'CloudFront', 'RAG/LLM', 'React'],
-    githubUrl: 'https://github.com/Seobeomsu',
     type: 'team',
   },
   {
     id: 'club-homepage',
     title: '🏛 동아리 홈페이지',
     subtitle: '학과 동아리 커뮤니티 플랫폼',
-    description: '족보 공유, 공지, 자유게시판 기능을 갖춘 학과 동아리 전용 커뮤니티 사이트.',
-    story: '배포 후 족보 게시판 이용률이 매우 낮다는 것을 확인했습니다. 요구사항 1순위가 족보 공유였기에 사용자 인터뷰를 진행했고, 작성자 이름 노출에 대한 부담감이 주요 원인임을 파악했습니다.',
+    description: '학습자료 공유, 공지, 자유게시판 기능을 갖춘 학과 동아리 전용 커뮤니티 사이트.',
+    story: '배포 후 학습자료 게시판 이용률이 매우 낮다는 것을 확인했습니다. 요구사항 1순위가 자료 공유였기에 사용자 인터뷰를 진행했고, 작성자 이름 노출에 대한 부담감이 주요 원인임을 파악했습니다.',
     achievement: '익명 마스킹 기능 구현 후 게시글 업로드 수 약 3배 증가',
     stacks: ['Spring Boot', 'JPA', 'MySQL', 'React'],
-    githubUrl: 'https://github.com/Seobeomsu/club-homepage',
     type: 'personal',
   },
 ]
