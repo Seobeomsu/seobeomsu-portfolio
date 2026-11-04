@@ -68,6 +68,17 @@ export default function Projects() {
                   >
                     github ↗
                   </a>
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="text-signal border border-signal/30 px-3 py-1.5 rounded-sm hover:bg-signal/10 transition-colors"
+                    >
+                      live ↗
+                    </a>
+                  )}
                   <button className="text-fg-dim border border-line-2 px-3 py-1.5 rounded-sm hover:border-signal/40 hover:text-signal transition-colors">
                     상세 →
                   </button>
