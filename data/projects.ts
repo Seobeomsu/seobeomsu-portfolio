@@ -53,8 +53,8 @@ export const projects: Project[] = [
 
   // ── 2026 하반기 ───────────────────────────────────────────────
   // 출처: Seobeomsu/byeoltokki 저장소 코드와 라이브 사이트에서 확인한 사실만 기재.
-  // TODO(확인 필요): byeoltokki 저장소는 현재 비공개. github 링크를 유지하려면 공개 전환,
-  //   아니면 raildock처럼 프로필 URL(https://github.com/Seobeomsu)로 바꿀지 결정.
+  // byeoltokki, rabbit-farmer 저장소는 비공개라 githubUrl은 raildock처럼 프로필 URL로 두고,
+  // 운영 사이트(liveUrl)를 주 링크로 노출한다.
   {
     id: 'byeoltokki',
     title: '🐰 별토끼 (byeoltokki.com)',
@@ -66,7 +66,7 @@ export const projects: Project[] = [
     achievement:
       '488개 페이지 전부 SSG, 재검증 없이 Workers 정적 자산을 읽기 전용 캐시로 서빙(R2/KV 등 추가 리소스 없음). 증강장기는 3티어 20종 증강, 상차림 4종, 증강을 인식하는 평가 함수 기반 AI 대국 지원. 방문자/수익 수치는 TODO(확인 필요).',
     stacks: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS v4', 'Cloudflare Workers', '@opennextjs/cloudflare', 'Vitest'],
-    githubUrl: 'https://github.com/Seobeomsu/byeoltokki',
+    githubUrl: 'https://github.com/Seobeomsu',
     liveUrl: 'https://byeoltokki.com',
     type: 'personal',
   },
@@ -81,7 +81,7 @@ export const projects: Project[] = [
     achievement:
       '필드별 원클릭 복사, 쇼핑몰 프리셋, 주소 관련 가이드 글 20편. 프리셋 URL(/juso/amazon 등)은 해당 가이드로 301 통합. 이용자 수치는 TODO(확인 필요).',
     stacks: ['Next.js Route Handler', 'TypeScript', '행안부 주소(juso) API'],
-    githubUrl: 'https://github.com/Seobeomsu/byeoltokki',
+    githubUrl: 'https://github.com/Seobeomsu',
     liveUrl: 'https://byeoltokki.com/juso',
     type: 'personal',
   },
@@ -96,7 +96,7 @@ export const projects: Project[] = [
     achievement:
       '변환 결과를 연례 종일 일정 .ics로 내보내기 지원, 역법 관련 가이드 글 19편. 이용자 수치는 TODO(확인 필요).',
     stacks: ['Next.js', 'TypeScript', 'korean-lunar-calendar', 'Vitest'],
-    githubUrl: 'https://github.com/Seobeomsu/byeoltokki',
+    githubUrl: 'https://github.com/Seobeomsu',
     liveUrl: 'https://byeoltokki.com/eumyang',
     type: 'personal',
   },
@@ -110,7 +110,7 @@ export const projects: Project[] = [
       '저장소에 README가 없어 기획 의도와 핵심 설계는 TODO(확인 필요)입니다. 저장소에는 docs/spec(architecture, game-design, modules), docs/plan, Assets/Tests, qa, tools 디렉터리가 있어 설계 문서와 테스트를 두고 개발하는 구조라는 점만 확인했습니다.',
     achievement: 'TODO(확인 필요): 공개 README가 없어 성과 서술 보류. 저장소 공개 또는 README 작성 후 채울 것.',
     stacks: ['Unity 6000.3.25f1', 'C#', 'TextMesh Pro'],
-    githubUrl: 'https://github.com/Seobeomsu/rabbit-farmer',
+    githubUrl: 'https://github.com/Seobeomsu',
     type: 'personal',
   },
 ]
