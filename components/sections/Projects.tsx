@@ -59,12 +59,28 @@ export default function Projects() {
                 </div>
 
                 <div className="flex gap-2 font-mono text-[11px]">
+                  {/* liveUrl이 있으면 운영 사이트가 주 링크, github는 보조 링크 */}
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="text-signal border border-signal/30 px-3 py-1.5 rounded-sm hover:bg-signal/10 transition-colors"
+                    >
+                      live ↗
+                    </a>
+                  )}
                   <a
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="text-signal border border-signal/30 px-3 py-1.5 rounded-sm hover:bg-signal/10 transition-colors"
+                    className={
+                      project.liveUrl
+                        ? 'text-fg-dim border border-line-2 px-3 py-1.5 rounded-sm hover:border-signal/40 hover:text-signal transition-colors'
+                        : 'text-signal border border-signal/30 px-3 py-1.5 rounded-sm hover:bg-signal/10 transition-colors'
+                    }
                   >
                     github ↗
                   </a>

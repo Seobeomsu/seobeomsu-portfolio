@@ -71,14 +71,31 @@ export default function ProjectModal({ project, onClose }: Props) {
             ))}
           </div>
 
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-mono text-[13px] text-signal border border-signal/30 px-4 py-2 rounded-sm hover:bg-signal/10 transition-colors"
-          >
-            github에서 보기 ↗
-          </a>
+          <div className="flex flex-wrap gap-2">
+            {/* liveUrl이 있으면 운영 사이트가 주 링크, github는 보조 링크 */}
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-mono text-[13px] text-signal border border-signal/30 px-4 py-2 rounded-sm hover:bg-signal/10 transition-colors"
+              >
+                사이트 보기 ↗
+              </a>
+            )}
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={
+                project.liveUrl
+                  ? 'inline-flex items-center gap-2 font-mono text-[13px] text-fg-dim border border-line-2 px-4 py-2 rounded-sm hover:border-signal/40 hover:text-signal transition-colors'
+                  : 'inline-flex items-center gap-2 font-mono text-[13px] text-signal border border-signal/30 px-4 py-2 rounded-sm hover:bg-signal/10 transition-colors'
+              }
+            >
+              github에서 보기 ↗
+            </a>
+          </div>
         </motion.div>
       </motion.div>
     </AnimatePresence>

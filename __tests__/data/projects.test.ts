@@ -1,8 +1,19 @@
 import { projects, type Project } from '@/data/projects'
 
 describe('projects data', () => {
-  it('3개의 프로젝트가 있다', () => {
-    expect(projects).toHaveLength(3)
+  it('7개의 프로젝트가 있다', () => {
+    expect(projects).toHaveLength(7)
+  })
+
+  it('id가 중복되지 않는다', () => {
+    const ids = projects.map((p) => p.id)
+    expect(new Set(ids).size).toBe(ids.length)
+  })
+
+  it('liveUrl이 있으면 https 주소다', () => {
+    projects
+      .filter((p) => p.liveUrl)
+      .forEach((p) => expect(p.liveUrl).toMatch(/^https:\/\//))
   })
 
   it('각 프로젝트에 필수 필드가 있다', () => {
